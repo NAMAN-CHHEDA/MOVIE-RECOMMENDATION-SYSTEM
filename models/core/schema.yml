@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_movie
+    columns:
+      - name: movie_id
+        tests:
+          - not_null
+          - unique
+      - name: title
+        tests:
+          - not_null
+
+  - name: features_movie_content
+    columns:
+      - name: primary_genre
+        tests:
+          - not_null
+              # where: "vote_count > 100"  

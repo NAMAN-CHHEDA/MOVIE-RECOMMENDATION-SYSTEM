@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    database: USER_DB_GECKO
+    schema: RAW
+    tables:
+      - name: tmdb_movies_raw
+      - name: tmdb_movies_enriched

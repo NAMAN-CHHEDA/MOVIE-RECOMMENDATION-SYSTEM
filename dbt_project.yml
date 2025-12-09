@@ -1,0 +1,30 @@
+name: 'movie_dbt'
+version: '1.0.0'
+
+profile: 'movie_dbt'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  movie_dbt:         # must match `name` above
+    staging:
+      +materialized: view
+    core:
+      +materialized: view
+    features:
+      +materialized: view
+    marts:
+      +materialized: table   # movie_similar_content becomes a TABLE
+
+tests:
+  +store_failures: true
+  +schema: "DBT_TEST_RESULTS"  # failed test rows go here
