@@ -26,7 +26,41 @@ The workflow supports:
 - Airflow DAG automation  
 - Analytical dashboard for recommendations
 
-A full Mermaid architecture diagram is included in the docs folder.
+## 🏗️ Architecture Overview
+
+The project follows a modern **ELT (Extract–Load–Transform)** architecture that integrates static CSV ingestion with dynamic TMDB API enrichment. Airflow orchestrates both ingestion pipelines, Snowflake stores the RAW and analytical layers, dbt performs all in-warehouse transformations, and Preset provides interactive BI dashboards.
+
+The complete end-to-end architecture is shown below:
+
+![Movie Recommendation Architecture](architecture.png)
+
+### 🔹 Workflow Summary
+
+- **CSV Source – TMDB Movies:**  
+  Loads the TMDB_10000_Movies_Dataset.csv into Snowflake RAW.
+
+- **TMDB API Source:**  
+  Fetches enriched metadata such as detailed genres and similar movie relationships.
+
+- **Airflow ETL Pipeline:**  
+  - Loads CSV into `RAW.TMDB_MOVIES`  
+  - Calls TMDB API to build `RAW.TMDB_ENRICHED`  
+  - Validates successful ingestion
+
+- **Snowflake RAW Layer:**  
+  Stores both CSV and API landing tables to ensure full reproducibility.
+
+- **dbt Transformations:**  
+  - `stg_tmdb_enriched` merges CSV + API  
+  - Builds three analytical models:  
+    - `dim_movie`  
+    - `fact_movie_features`  
+    - `fact_similar_movies`
+
+- **BI Dashboard – Movie Analytics (Preset):**  
+  Provides KPIs, similarity analysis, genre insights, and movie recommendation visualizations.
+
+
 
 ---
 
