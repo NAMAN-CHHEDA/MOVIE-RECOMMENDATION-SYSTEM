@@ -151,12 +151,14 @@ Visualize recommendations & insights.
 
 ## Similar Movies Query
 
+## Similar Movies Query
 
+```sql
 SELECT *
 FROM ANALYTICS.MOVIE_SIMILAR_CONTENT
 WHERE MOVIE_ID = 27205
 ORDER BY VOTE_AVERAGE DESC;
-
+```
 
 
 ## **Authors** 
