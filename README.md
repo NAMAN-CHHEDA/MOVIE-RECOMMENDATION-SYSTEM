@@ -1,15 +1,32 @@
-Welcome to your new dbt project!
+# 🎬 End-to-End Data Engineering Pipeline for Movie Recommendation
 
-### Using the starter project
+This project implements a fully automated **ELT data engineering pipeline** for movie recommendation analytics using:
 
-Try running the following commands:
-- dbt run
-- dbt test
+- **Snowflake** – Cloud Data Warehouse  
+- **Apache Airflow** – Workflow Orchestration  
+- **dbt (Data Build Tool)** – In-warehouse Transformations  
+- **Preset / Apache Superset** – BI Dashboarding  
+- **TMDB 10,000 Movies Dataset (CSV)** – Primary Static Source  
+- **TMDB API Enrichment** – Dynamic Metadata (genres, similar movies, popularity, etc.)
 
+The pipeline loads raw movie data, enriches it using the TMDB API, processes it through dbt models, and visualizes results in a Preset dashboard designed for movie recommendation insights.
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+---
+
+## 🔍 **Project Overview**
+
+This pipeline answers:  
+**“Given any movie, what are the most similar films in terms of genre, popularity, rating, and release characteristics?”**
+
+The workflow supports:
+
+- Data ingestion from CSV  
+- API-driven data enrichment  
+- Snowflake transformation using dbt  
+- Airflow DAG automation  
+- Analytical dashboard for recommendations
+
+---
+
+## 📁 **Repository Structure**
+
