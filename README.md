@@ -171,7 +171,7 @@ Naman Vipul Chheda
 
 Nikhil Kanaparthi
 
-## **Acknowledgements**## 
+## **Acknowledgements**
 
 TMDB for API access
 
