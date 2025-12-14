@@ -1,4 +1,4 @@
-# 🎬 End-to-End Data Engineering Pipeline for Movie Recommendation
+# End-to-End Data Engineering Pipeline for Movie Recommendation
 
 This project implements a fully automated **ELT data engineering pipeline** for movie recommendation analytics using:
 
@@ -13,7 +13,7 @@ The pipeline loads raw movie data, enriches it using the TMDB API, processes it 
 
 ---
 
-## 🔍 **Project Overview**
+## **Project Overview**
 
 This pipeline answers:  
 **“Given any movie, what are the most similar films in terms of genre, popularity, rating, and release characteristics?”**
@@ -28,5 +28,6 @@ The workflow supports:
 
 ---
 
-## 📁 **Repository Structure**
+##  **Repository Structure**
+
 
