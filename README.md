@@ -30,7 +30,7 @@ A full Mermaid architecture diagram is included in the docs folder.
 
 ---
 
-## 📦 **Data Sources**
+##  **Data Sources**
 
 ### **1. Static CSV Dataset**
 - `TMDB_10000_Movies_Dataset.csv`
@@ -49,7 +49,7 @@ The API key is stored securely in **Airflow Variables**.
 
 ---
 
-## 🧊 **Snowflake Setup**
+## **Snowflake Setup**
 
 ### **Schemas used:**
 - `RAW` – Raw CSV & API ingested data  
@@ -64,7 +64,7 @@ The API key is stored securely in **Airflow Variables**.
 
 ---
 
-## ⚙️ **Airflow Pipelines**
+## **Airflow Pipelines**
 
 ### **1. ETL Pipeline – `movie_tmdb_etl_pipeline`**
 Tasks:
@@ -82,7 +82,7 @@ Enforces clean, reliable analytical models.
 
 ---
 
-## 🧱 **dbt Models**
+##  **dbt Models**
 
 ### **Staging Models**
 - `stg_tmdb_movies.sql` – Type cleaning, date parsing, genre extraction  
@@ -101,17 +101,17 @@ Enforces clean, reliable analytical models.
 
 ---
 
-## 📈 **Preset Dashboard**
+##  **Preset Dashboard**
 
 The dashboard contains:
 
-### 🎯 KPI Cards
+### KPI Cards
 - Total recommendation pairs  
 - Distinct movies  
 - Average rating  
 - Average year difference  
 
-### 📊 Charts
+###  Charts
 - Top Recommended Movies  
 - Genre Distribution (Pie Chart)  
 - Popularity vs Rating Scatter Plot  
@@ -126,8 +126,62 @@ The dashboard supports filters for:
 
 ---
 
-## 🚀 **How to Run This Project**
+### **3. Configure Airflow**
+- Add Snowflake connection  
+- Add Airflow Variables:  
+  - `snowflake_account`  
+  - `snowflake_database`  
+  - `TMDB_API_KEY`  
 
-### **1. Clone Repo**
+### **4. Run Airflow**
+
+
+### **5. Trigger ETL DAG**
+- Load CSV  
+- Enrich using TMDB API  
+
+### **6. Run dbt**
+dbt run
+dbt test
+
+
+### **7. Open Preset Dashboard**
+Visualize recommendations & insights.
+
+---
+
+## 🧪 **Sample Queries**
+
+Similar movies:
+```sql
+SELECT *
+FROM ANALYTICS.MOVIE_SIMILAR_CONTENT
+WHERE MOVIE_ID = 27205
+ORDER BY VOTE_AVERAGE DESC;'''
+
+
+👥 Authors
+
+Ameya Satish Khond
+
+Prathmesh Mankar
+
+Naman Vipul Chheda
+
+Nikhil Kanaparthi
+
+🙌 Acknowledgements
+
+TMDB for API access
+
+Snowflake for cloud computing credits
+
+Preset for BI environment
+
+Professor Keeyong Han (Data Warehouse 226)
+
+📜 License
+
+
 
 
