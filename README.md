@@ -151,8 +151,6 @@ Visualize recommendations & insights.
 
 ## Similar Movies Query
 
-## Similar Movies Query
-
 ```sql
 SELECT *
 FROM ANALYTICS.MOVIE_SIMILAR_CONTENT
@@ -175,7 +173,7 @@ Nikhil Kanaparthi
 
 TMDB for API access
 
-Snowflake for cloud computing credits
+Snowflake for Warehouse
 
 Preset for BI environment
 
