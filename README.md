@@ -141,8 +141,8 @@ The dashboard supports filters for:
 - Enrich using TMDB API  
 
 ### **6. Run dbt**
-dbt run
-dbt test
+- dbt run  
+- dbt test
 
 
 ### **7. Open Preset Dashboard**
