@@ -157,10 +157,10 @@ Similar movies:
 SELECT *
 FROM ANALYTICS.MOVIE_SIMILAR_CONTENT
 WHERE MOVIE_ID = 27205
-ORDER BY VOTE_AVERAGE DESC;'''
+ORDER BY VOTE_AVERAGE DESC;``` 
 
 
-👥 Authors
+## **Authors**
 
 Ameya Satish Khond
 
@@ -170,7 +170,7 @@ Naman Vipul Chheda
 
 Nikhil Kanaparthi
 
-🙌 Acknowledgements
+## **Acknowledgements**## 
 
 TMDB for API access
 
@@ -179,8 +179,6 @@ Snowflake for cloud computing credits
 Preset for BI environment
 
 Professor Keeyong Han (Data Warehouse 226)
-
-📜 License
 
 
 
