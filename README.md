@@ -148,16 +148,14 @@ dbt test
 ### **7. Open Preset Dashboard**
 Visualize recommendations & insights.
 
----
 
-## 🧪 **Sample Queries**
+## Similar Movies Query
 
-Similar movies:
 ```sql
 SELECT *
 FROM ANALYTICS.MOVIE_SIMILAR_CONTENT
 WHERE MOVIE_ID = 27205
-ORDER BY VOTE_AVERAGE DESC;``` 
+ORDER BY VOTE_AVERAGE DESC;```sql
 
 
 ## **Authors**
