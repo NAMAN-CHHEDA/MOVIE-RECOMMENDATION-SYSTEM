@@ -26,7 +26,7 @@ The workflow supports:
 - Airflow DAG automation  
 - Analytical dashboard for recommendations
 
-## 🏗️ Architecture Overview
+##  Architecture Overview
 
 The project follows a modern **ELT (Extract–Load–Transform)** architecture that integrates static CSV ingestion with dynamic TMDB API enrichment. Airflow orchestrates both ingestion pipelines, Snowflake stores the RAW and analytical layers, dbt performs all in-warehouse transformations, and Preset provides interactive BI dashboards.
 
@@ -34,7 +34,7 @@ The complete end-to-end architecture is shown below:
 
 ![Movie Recommendation Architecture](architecture.png)
 
-### 🔹 Workflow Summary
+###  Workflow Summary
 
 - **CSV Source – TMDB Movies:**  
   Loads the TMDB_10000_Movies_Dataset.csv into Snowflake RAW.
