@@ -30,4 +30,28 @@ The workflow supports:
 
 ##  **Repository Structure**
 
-
+├── dags/
+│ ├── movie_tmdb_etl_pipeline.py # Airflow ETL pipeline (CSV + API)
+│ ├── movie_tmdb_dbt_pipeline.py # Airflow DAG triggering dbt run/test
+│
+├── dbt/
+│ ├── models/
+│ │ ├── staging/
+│ │ │ ├── stg_tmdb_movies.sql
+│ │ │ ├── stg_tmdb_enriched.sql
+│ │ ├── marts/
+│ │ │ ├── dim_movie.sql
+│ │ │ ├── features_movie_content.sql
+│ │ │ ├── movie_similar_content.sql
+│ ├── tests/
+│ │ ├── not_null_dim_movie_id.yml
+│ │ ├── unique_dim_movie_id.yml
+│
+├── scripts/
+│ ├── tmdb_api_enrichment.py # Python script to call TMDB API
+│
+├── data/
+│ ├── TMDB_10000_Movies_Dataset.csv # Primary dataset
+│
+├── README.md # Project documentation
+└── requirements.txt # Python dependencies
