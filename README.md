@@ -26,32 +26,108 @@ The workflow supports:
 - Airflow DAG automation  
 - Analytical dashboard for recommendations
 
+A full Mermaid architecture diagram is included in the docs folder.
+
 ---
 
-##  **Repository Structure**
+## 📦 **Data Sources**
 
-├── dags/
-│ ├── movie_tmdb_etl_pipeline.py # Airflow ETL pipeline (CSV + API)
-│ ├── movie_tmdb_dbt_pipeline.py # Airflow DAG triggering dbt run/test
-│
-├── dbt/
-│ ├── models/
-│ │ ├── staging/
-│ │ │ ├── stg_tmdb_movies.sql
-│ │ │ ├── stg_tmdb_enriched.sql
-│ │ ├── marts/
-│ │ │ ├── dim_movie.sql
-│ │ │ ├── features_movie_content.sql
-│ │ │ ├── movie_similar_content.sql
-│ ├── tests/
-│ │ ├── not_null_dim_movie_id.yml
-│ │ ├── unique_dim_movie_id.yml
-│
-├── scripts/
-│ ├── tmdb_api_enrichment.py # Python script to call TMDB API
-│
-├── data/
-│ ├── TMDB_10000_Movies_Dataset.csv # Primary dataset
-│
-├── README.md # Project documentation
-└── requirements.txt # Python dependencies
+### **1. Static CSV Dataset**
+- `TMDB_10000_Movies_Dataset.csv`
+- Contains: titles, genres, budgets, revenues, popularity, vote averages, vote counts, release year.
+
+### **2. TMDB API Enrichment**
+Used to fetch:
+
+- Genre details  
+- Spoken languages  
+- Updated ratings & popularity  
+- Similar movies  
+- Recommendations  
+
+The API key is stored securely in **Airflow Variables**.
+
+---
+
+## 🧊 **Snowflake Setup**
+
+### **Schemas used:**
+- `RAW` – Raw CSV & API ingested data  
+- `ANALYTICS` – dbt-transformed analytical tables  
+
+### **Core Tables:**
+- `RAW.TMDB_MOVIES` (CSV ingest)  
+- `RAW.TMDB_ENRICHED` (API enrichment)  
+- `ANALYTICS.DIM_MOVIE`  
+- `ANALYTICS.FEATURES_MOVIE_CONTENT`  
+- `ANALYTICS.MOVIE_SIMILAR_CONTENT`
+
+---
+
+## ⚙️ **Airflow Pipelines**
+
+### **1. ETL Pipeline – `movie_tmdb_etl_pipeline`**
+Tasks:
+- `create_raw_objects` – Create stage + raw tables  
+- `load_tmdb_movies` – Load CSV into Snowflake RAW  
+- `validate_tmdb_load` – Row-count validation  
+- `enrich_with_tmdb` – API calls + JSON normalization  
+
+### **2. dbt Pipeline – `movie_tmdb_dbt_pipeline`**
+Tasks:
+- `dbt run`  
+- `dbt test`  
+
+Enforces clean, reliable analytical models.
+
+---
+
+## 🧱 **dbt Models**
+
+### **Staging Models**
+- `stg_tmdb_movies.sql` – Type cleaning, date parsing, genre extraction  
+- `stg_tmdb_enriched.sql` – API metadata normalization  
+
+### **Marts / Features**
+- `dim_movie` – Movie dimension table  
+- `features_movie_content` – Ratings, popularity, genres  
+- `movie_similar_content` – Similar movie pairs with rating, genre, year difference  
+
+### **Tests**
+- NOT NULL movie_id  
+- UNIQUE movie_id  
+- NOT NULL primary genre  
+- Referential integrity between similar movies  
+
+---
+
+## 📈 **Preset Dashboard**
+
+The dashboard contains:
+
+### 🎯 KPI Cards
+- Total recommendation pairs  
+- Distinct movies  
+- Average rating  
+- Average year difference  
+
+### 📊 Charts
+- Top Recommended Movies  
+- Genre Distribution (Pie Chart)  
+- Popularity vs Rating Scatter Plot  
+- Year Difference Histogram  
+- Similar Movie Table  
+- Genre Similarity Bar Chart  
+- Rating by Genre  
+
+The dashboard supports filters for:
+- Movie Title  
+- Genre  
+
+---
+
+## 🚀 **How to Run This Project**
+
+### **1. Clone Repo**
+
+
